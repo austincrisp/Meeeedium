@@ -40,30 +40,54 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                @Html.Partial("_LoginPartial")
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        @Html.ActionLink("Home", "Index", "Home")
-                    </li>
-                    <li>
-                        @Html.ActionLink("About", "About", "Home")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Sample Post", "SamplePost", "Home")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Contact", "Contact", "Home")
-                    </li>
-                </ul>
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("About", "About", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Blogs", "Index", "Blog")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Write Entry", "Create", "Blog")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Contact", "Contact", "Home")
+                        </li>
+                    </ul>
+                </div>
             <!-- /.navbar-collapse -->
+            }
+            else
+            {
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("About", "About", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Contact", "Contact", "Home")
+                        </li>
+                    </ul>
+                </div>
+            }
         </div>
+
         <!-- /.container -->
-    </nav>
+</nav>
 
     @RenderBody()
 
