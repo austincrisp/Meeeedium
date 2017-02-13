@@ -38,6 +38,9 @@
                         @Html.TextArea("Body", null, new { @class = "form-control", placeholder = "Write Blog Here..." })
                     </p>
                     <p>
+                        @Html.CheckBox("Public", true, new { @class = "form-control"})
+                    </p>
+                    <p>
                         <input type="submit" class="btn btn-primary" value="Publish" />
                     </p>
                 }
