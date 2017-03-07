@@ -34,6 +34,9 @@
                         Public: @Html.CheckBox("Public")
                     </p>
                     <p>
+                        @Html.CheckBox("Public", true, new { @class = "form-control"})
+                    </p>
+                    <p>
                         <input type="submit" class="btn btn-primary" value="Publish" />
                     </p>
                 }
