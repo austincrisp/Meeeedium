@@ -19,7 +19,7 @@ namespace Meeeedium.Controllers
         public ActionResult Index()
         {
             string userId = User.Identity.GetUserId();
-            var blogs = db.Blogs.Include(b => b.Author).Where(b => b.AuthorId == userId);
+            var blogs = db.Blogs.Include(b => b.Author).Where(b => b.Public == true || b.AuthorId == userId).OrderByDescending(b => b.CreatedDate);
             return View(blogs.ToList());
         }
 
@@ -32,10 +32,12 @@ namespace Meeeedium.Controllers
         // POST: Blog/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Blog blog)
+        public ActionResult Create([Bind(Include = "Id,Title,TeaserText,Body,Public,AuthorId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.AuthorId = User.Identity.GetUserId();
+                blog.CreatedDate = DateTime.Now;
                 db.Blogs.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");

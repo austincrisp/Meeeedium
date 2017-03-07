@@ -11,7 +11,7 @@ namespace Meeeedium.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string TeaserText { get; set; }
-        public string CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string Body { get; set; }
         public bool Public { get; set; }
 
